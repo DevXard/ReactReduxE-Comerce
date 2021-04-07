@@ -7,7 +7,7 @@ const ShopingCartPage = () => {
         <div>
             <h1>ShopingCart</h1>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 gap-4 lg:grid-cols-3  gap-4 p-5 ">
-                {cartList.map(item => <ShopingCartCard key={item} quantity={addItem[item]} data={items.products[item]}/>)}
+                {cartList.map(item => <ShopingCartCard key={item} id={item} quantity={addItem[item]} data={items.products[item]}/>)}
             </div>
             
         </div>

@@ -1,20 +1,17 @@
 import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-// import ShopingCartCard from './ShopingCartCards';
+import {total} from '../../helpers/helpers';
+
 
 const ShopingCart = () => {
     const {items, addItem} = useSelector(data => data)
-    // console.log(items, addItem)
-    const cartList = Object.keys(addItem)
     
-    const total = cartList.reduce((acc, item) =>{
-        return acc + (items.products[item].price * addItem[item])
-    },0)
+    const totalCost = total(items, addItem)
     
     return( 
         <div >
             <Link to='/cart'>
-                <h1 className="absolute top-5 right-5 bg-green-100 px-2 rounded-md">Cart Total: {total}</h1>
+                <h1 className="absolute top-5 right-5 bg-green-100 px-2 rounded-md">Cart Total: {totalCost}</h1>
             </Link>   
         </div>
     )
@@ -22,4 +19,3 @@ const ShopingCart = () => {
 
 export default ShopingCart;
 
-// {cartList.map(item => <ShopingCartCard key={item} data={items.products[item]}/>)}

@@ -9,7 +9,10 @@ export default function items(state=INITIAL_VALUE, action){
             } 
             return {...state, [action.payload]: state[action.payload] + 1}
         case "REMOVE_ITEM":
-            if(state[action.payload] === 0){
+            if (state[action.payload] !== 1){
+                return {...state, [action.payload]: state[action.payload] - 1}
+            }
+            if(state[action.payload] === 1){
                 console.log("remove")
                 let neObj = {...state}
                 delete neObj[action.payload]
@@ -17,12 +20,8 @@ export default function items(state=INITIAL_VALUE, action){
                 
            }
             if(!state[action.payload])return state
-            if (state[action.payload] > 0){
-                return {...state, [action.payload]: state[action.payload] - 1}
-            } 
-           
-              
-            break;
+            
+           break;
         default: 
             return state
     }

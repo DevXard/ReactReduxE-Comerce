@@ -13,7 +13,7 @@ export default function items(state=INITIAL_VALUE, action){
                 return {...state, [action.payload]: state[action.payload] - 1}
             }
             if(state[action.payload] === 1){
-                console.log("remove")
+                
                 let neObj = {...state}
                 delete neObj[action.payload]
                 return neObj
